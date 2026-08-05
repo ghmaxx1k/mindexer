@@ -1,19 +1,27 @@
 # mindexer
-a simple file indexer written in Rust
+a file indexer written in Rust
 
-mrmaxxgen (c) 2026, licensed under the MIT license <https://mit-license.org>
+ghmaxx1k (c) 2026, licensed under the MIT license <https://mit-license.org>
 
-mindexer is a file indexer/sorter utility for automatic by-type file sorting/indexing in specific folder, it can be used for servers html's pages or just for tidying up your system with zero effort, mindexer handles (almost) everything by itself thru fs/env calls and error handling, it will also help you creating a base to start using it.
+# how to use:
+    -install: run "sudo make install"
+    -uninstall: "sudo make uninstall"
+    -config syntax: VARIABLE=BOOLEAN/STRING
+        example:    mindexerbasename=mindexerbase
+                    logging=true
 
-current version: 0.2.0 BETA - PRE-RELEASE
+config and logs can be found at /etc/mindexer
+
+to modify config just type the desired flags inside
+
+current version: 0.2.1 BETA
 
 current stable version: 0.1.1 BETA
 
 for future releases:
-    -add support for other wildcards
-    -add reverse index feature
+    -add HTTP/HTTPS request support
 
-changelog:
+# changelog:
 
 0.0.1 ALPHA (pre-release):
     -created repo and code base
@@ -43,3 +51,8 @@ changelog:
     -now supports direct variable modification on top of the "main" thread (unstable)
     -started developing indexer algorithm
     -mindexer is now completely independent
+
+0.2.1 BETA:
+    -added config support
+    -added logging
+    -renewed wildcard detection algorithm
