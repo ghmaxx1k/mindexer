@@ -2,30 +2,28 @@
 // licensed under the MIT license <https://mit-license.org>
 
 use std::fs;
+use glob::glob;
 use std::path::Path;
+use std::collections::HashMap;
 
-#[allow(non_snake_case)]
-fn main() {    
+fn main() {
     
-    let CONFIG_PATH = "/etc/mindexer/config";
-    let mut RUNTIME_VARIABLES = vec![""];
-    let mut MINDEXER_BASE_NAME = vec![""];
-
-    if Path::new(CONFIG_PATH).is_file() {
-        let CONFIG = fs::read_to_string(CONFIG_PATH).expect("failed to read file");
-        for line in CONFIG.lines() {
-            let (KEY, VALUE) = line.split_once('=').unwrap();
-            if VALUE == "true" {
-                RUNTIME_VARIABLES.push(KEY);
-            }
-            if KEY == "mindexerbasename" {
-                MINDEXER_BASE_NAME.push(VALUE);
-            }
-        }
-        // indexer
-    } else {
-        println!("[ error ] config file not found, halting");
+    let config_path = "/etc/mindexer/config.txt";
+    let log_path = "/etc/mindexer/log.txt";
+    let mut base: Vec<String> = vec![];
+    let config_variables: Vec<String> = vec![];
+    
+    if !Path::new(config_path).is_file() {
+        println!("[e] config file not found");
         return();
+    }
+    if !Path::new(log_path).is_file() {
+        println!("[e] log file not found");
+        return();
+    }
+
+    for line in fs::read_to_string(config_path) {
+        println!("{}", line);
     }
 
 }
